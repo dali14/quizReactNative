@@ -59,8 +59,6 @@ export default function CapsuleHome() {
     <View style={styles.containerG}>
     <FlatGrid
       itemDimension={150}
-      
-      
       data={items}
       style={styles.gridView}
        //staticDimension={300}

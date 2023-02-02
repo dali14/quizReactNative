@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button,FlatList ,TouchableOpacity,StyleSheet} from 'react-native';
-
-
+import { View, Text, TextInput, Button, FlatList ,TouchableOpacity,StyleSheet ,Image } from 'react-native';
+import { FlatGrid } from 'react-native-super-grid';
     
 
 const ChoseType = () => {
@@ -17,7 +16,13 @@ const ChoseType = () => {
   const handleUploadImage = () => {
     // Code to upload the selected image to the server
   };
-    
+  const [items, setItems] = React.useState([
+    { name: 'Vrai & Faux', code: '#1abc9c',uri: 'https://picsum.photos/200/300'},
+    { name: 'Q_C_M', code: '#2ecc71' ,uri: 'https://picsum.photos/200/300'},
+    { name: 'dali', code: '#1abc9c',uri: 'https://picsum.photos/200/300'},
+    { name: 'Ahmed', code: '#2ecc71' ,uri: 'https://picsum.photos/200/300'},
+   
+  ]);
   return (
     <View style={{ backgroundColor,flex: 1 }}>
 
@@ -29,10 +34,32 @@ const ChoseType = () => {
         
             <View backgroundColor style={styles.containerT}>
               <View style={styles.containerNav}>
-              <Text style={{ marginHorizontal: 10,fontSize: 20 ,fontWeight: 'bold',opacity :10,borderBottomWidth: 2}}>All Types</Text> 
-              <Text style={{ marginHorizontal: 10,fontSize: 20}}>Questions </Text>
-              <Text style={{ marginHorizontal: 10,fontSize: 20}}>Content </Text>
+                <Text style={{ marginHorizontal: 10,fontSize: 20 ,fontWeight: 'bold',opacity :10 , borderBottomWidth: 2}}>All Types</Text> 
+                <Text style={{ marginHorizontal: 10,fontSize: 20 ,fontWeight: 'bold'}}>Questions </Text>
+                <Text style={{ marginHorizontal: 10,fontSize: 20 ,fontWeight: 'bold'}}>Content </Text>
               </View>
+              <View style={styles.containerG}>
+                <FlatGrid
+                  itemDimension={150} 
+                    data={items}
+                    style={styles.gridView}
+                    staticDimension={300}
+                    //fixed
+                    spacing={10}
+                    renderItem={({ item }) => (
+                      <TouchableOpacity>
+                        <View style={[styles.itemContainer, { backgroundColor: 'transparent' , height: 250 ,borderStyle: 'dotted'}]}>
+                          <View>
+                            <View>
+                              <Text style={styles.itemName}>  {item.name}</Text>
+                            </View>
+                          </View>
+                        </View>
+                      </TouchableOpacity>
+                                )}
+      showsVerticalScrollIndicator={false}
+    />
+    </View>
             </View>    
         </View>
 
@@ -57,6 +84,24 @@ const ChoseType = () => {
   );
 };
 const styles = StyleSheet.create({
+  containerG:{
+    
+    flex: 1,
+  },
+  gridView: {
+    flex: 1,
+    marginTop: 10,
+    margin : 5
+  },
+  itemContainer: {
+    borderRadius: 45,
+    borderBottomColor : 'black',
+    borderWidth : 3,
+    padding: 10,
+    height: 100,
+    width :350,
+    
+  },
     containerb :{
         flex : 0.10,
         flexDirection: 'row',
@@ -68,13 +113,16 @@ const styles = StyleSheet.create({
         flex: 1,
         borderRadius:50,
         backgroundColor : '#F8CBA6',
-        opacity : 0.4,
-        margin:10
+        opacity : 1,
+        margin:10,
+        borderWidth : 2,
+        backgroundColor: 'rgba(255, 0, 0, 0.1)'
       },
       containerNav :{
         flexDirection:'row',
         alignSelf: 'center',
         marginTop :10 ,
+        
       },
       containerH :{
         flex : 0.05,

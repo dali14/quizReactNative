@@ -20,7 +20,7 @@ const AddCapsule = () => {
   const handleUploadImage = () => {
     // Code to upload the selected image to the server
   };
-    
+ 
   return (
     <View style={{ backgroundColor,flex: 1 }}>
 
